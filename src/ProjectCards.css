@@ -1,0 +1,25 @@
+.project-cards-scroll { position: absolute; top: max(230px, calc(10svh + 6vw + 32px)); bottom: 100px; left: 4.4vw; right: 4.2vw; z-index: 1; overflow: auto; overscroll-behavior: contain; scrollbar-width: thin; scrollbar-color: #444 transparent; padding: 8px; }
+.project-cards-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px clamp(14px, 1.4vw, 32px); align-items: start; }
+.project-preview { position: relative; min-width: 0; display: block; transition: transform 300ms ease; }
+.project-preview::after { content: ''; position: absolute; inset: 0; border-radius: 6px; background: #000; opacity: .3; pointer-events: none; transition: opacity 300ms ease; }
+.project-preview:hover, .project-preview:focus-visible { transform: scale(1.03); z-index: 2; }
+.project-preview:hover::after { opacity: 0; }
+.project-preview:focus-visible { outline: 1px solid white; outline-offset: 4px; }
+.project-preview img, .project-preview video { display: block; width: 100%; height: auto; border-radius: 6px; }
+.project-placeholder { display: flex; align-items: center; justify-content: center; position: relative; aspect-ratio: 16 / 9; background: #161616; border: 1px solid #ffffff26; border-radius: 6px; color: #777; }
+.project-placeholder span:first-child { font-size: clamp(24px, 2.6vw, 56px); }
+.project-placeholder span:last-child { position: absolute; bottom: 8px; right: 10px; font-size: 11px; }
+.project-detail { position: relative; z-index: 1; text-align: center; }
+.project-detail h2 { font-family: 'Second Screen Song', serif; font-size: clamp(40px, 5vw, 90px); font-weight: 400; }
+.project-detail a { display: inline-block; border-bottom: 1px solid #888; padding: 12px 0; }
+@media (max-width: 900px) {
+  .project-cards-scroll { top: 280px; }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .project-preview { animation: project-reveal 600ms both; animation-delay: var(--card-delay); }
+  @keyframes project-reveal { from { opacity: 0; translate: 0 20px; filter: blur(4px); } to { opacity: 1; translate: 0 0; filter: blur(0); } }
+}
+
+.project-hover-label { position: absolute; left: 16px; bottom: 14px; z-index: 1; color: #fff; font-size: 14px; line-height: 1.4; text-shadow: 0 1px 5px #000; opacity: 0; pointer-events: none; transition: opacity 180ms ease; }
+.project-preview:hover .project-hover-label { opacity: 1; }
+

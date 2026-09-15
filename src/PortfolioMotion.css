@@ -1,0 +1,13 @@
+/* Motion is progressive: without JavaScript or with reduced motion, all content stays visible. */
+.projects-heading { display: flex; align-items: baseline; gap: 24px; }
+.projects-heading p { font-size: clamp(24px, 3.4vw, 68px); letter-spacing: -.045em; line-height: 1; }
+.projects-heading h2 { font-size: clamp(24px, 2.3vw, 44px); flex-shrink: 0; }
+.project-preview, .study-video-grid > div, .study-image-grid > button { overflow: hidden; }
+@media (prefers-reduced-motion: no-preference) {
+  .project-preview { animation: none; transition: transform 700ms cubic-bezier(.16,1,.3,1); }
+  .project-preview::after { transition: opacity 700ms cubic-bezier(.16,1,.3,1); }
+}
+@media (max-width: 700px) {
+  .projects-heading { display: block; }
+  .projects-heading p { margin-top: 10px; font-size: clamp(22px, 5.2vw, 36px); }
+}
